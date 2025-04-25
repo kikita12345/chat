@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta
+    name="description"
+    content="Защищенный корпоративный мессенджер"
+  />
+  <link rel="apple-touch-icon" href="/logo192.png" />
+  <link rel="manifest" href="/manifest.json" />
+  <title>Мессенджер Кикиты</title>
+  
+  <!-- Встроенная конфигурация вместо внешнего файла -->
+  <script type="text/javascript">
+    // Конфигурация клиента - глобальные переменные, доступные в браузере
+    window.APP_CONFIG = {
+      // API URL
+      API_URL: "/api",
+      // WebSocket URL (относительный)
+      WS_URL: "/api/ws",
+      // URL для LiveKit (видеозвонки)
+      LIVEKIT_URL: "/livekit",
+      // Версия приложения
+      VERSION: "1.0.0"
+    };
+  </script>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  
+  <style>
+    body {
+      background-color: #121212;
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .spinner-border {
+      width: 3rem;
+      height: 3rem;
+      margin-bottom: 1.5rem;
+      color: #4f9eed;
+    }
+  </style>
+</head>
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  
+  <!-- Скрипт для диагностики состояния перед загрузкой React -->
+  <script>
+    (function() {
+      console.log('=== Диагностика браузера и состояния ===');
+      console.log('User Agent:', navigator.userAgent);
+      console.log('WebSocket поддерживается:', typeof WebSocket !== 'undefined');
+      console.log('localStorage поддерживается:', typeof localStorage !== 'undefined');
+      
+      if (typeof localStorage !== 'undefined') {
+        try {
+          console.log('localStorage содержит ключи:', Object.keys(localStorage));
+          const authToken = localStorage.getItem('auth_token');
+          const token = localStorage.getItem('token');
+          console.log('auth_token присутствует:', !!authToken);
+          console.log('token присутствует:', !!token);
+        } catch (error) {
+          console.error('Ошибка доступа к localStorage:', error);
+        }
+      }
+      
+      // Код автоматического тестирования WebSocket соединения удален
+    })();
+  </script>
+  
+  <div id="root">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+          <div class="loading">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Загрузка...</span>
+            </div>
+            <h3>Мессенджер Кикиты</h3>
+            <p class="text-muted">Загрузка системы...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Bootstrap JS Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
